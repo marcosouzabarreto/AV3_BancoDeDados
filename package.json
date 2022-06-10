@@ -10,7 +10,8 @@
     "nodemon": "^2.0.16"
   },
   "scripts": {
-    "dev": "nodemon backend/src/index.js"
+    "dev": "nodemon backend/src/index.js",
+    "frontend": "cd frontend && yarn start"
   },
   "author": "",
   "license": "ISC",

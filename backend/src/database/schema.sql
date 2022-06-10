@@ -1,32 +1,66 @@
 CREATE DATABASE av3bancodedados;
 
-CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+CREATE TABLE IF NOT EXISTS users (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
+  email VARCHAR NOT NULL,
+  password VARCHAR NOT NULL
+);
 
-CREATE TABLE IF NOT EXISTS function (
-  id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
+CREATE TABLE IF NOT EXISTS admins (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id INT,
+
+  FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS teachers (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id INT,
+
+  FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS coordinators (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  user_id INT,
+
+  FOREIGN KEY(user_id) REFERENCES users(id)
+);
+
+CREATE TABLE IF NOT EXISTS courses (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  coordinator_id INT,
+
+  FOREIGN KEY(coordinator_id) REFERENCES coordinators(id)
+);
+
+CREATE TABLE IF NOT EXISTS subjects (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   name VARCHAR NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS class (
-  id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-  name VARCHAR NOT NULL,
-  schedule VARCHAR
+CREATE TABLE IF NOT EXISTS course_subjects (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  course_id INT,
+  subject_id INT,
+
+  FOREIGN KEY (course_id) REFERENCES courses(id),
+  FOREIGN KEY (subject_id) REFERENCES subjects(id)
 );
 
-CREATE TABLE IF NOT EXISTS course (
-  id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-  name VARCHAR NOT NULL,
-  class_id UUID,
-  FOREIGN KEY(class_id) REFERENCES class(id)
+CREATE TABLE IF NOT EXISTS classes (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  teacher_id INT,
+  subject_id INT,
+
+  FOREIGN KEY (subject_id) REFERENCES subjects(id),
+  FOREIGN KEY (teacher_id) REFERENCES teachers(id)
 );
 
-CREATE TABLE IF NOT EXISTS users (
-  id UUID NOT NULL UNIQUE DEFAULT uuid_generate_v4(),
-  name VARCHAR NOT NULL,
-  email VARCHAR UNIQUE, 
-  password VARCHAR,
-  function_id UUID,
-  course_id UUID,
-  FOREIGN KEY(function_id) REFERENCES function(id),
-  FOREIGN KEY(course_id) REFERENCES course(id)
+CREATE TABLE IF NOT EXISTS students (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  class_id INT,
+
+  FOREIGN KEY (class_id) REFERENCES classes(id)
 );
