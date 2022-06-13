@@ -14,17 +14,17 @@ class AdminsRepository {
   async findById(id) {
     const [row] = await db.query(
       `
-    SELECT users.*
-    FROM users
-    INNER JOIN admins ON admins.user_id = users.id
-    WHERE users.id = $1
+      SELECT users.*
+      FROM users
+      INNER JOIN admins ON admins.user_id = users.id
+      WHERE users.id = $1
     `,
       [id]
     );
     return row;
   }
 
-  async create({ userId }) {
+  async create(userId) {
     const [row] = await db.query(
       `
       INSERT INTO admins (user_id)

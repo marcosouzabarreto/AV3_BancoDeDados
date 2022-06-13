@@ -1,7 +1,30 @@
 const db = require('../../database');
 
 class CoordinatorsRepository {
-  async create({ userId }) {
+  async findAll() {
+    const rows = await db.query(`
+    SELECT users.*
+    FROM users
+    INNER JOIN coordinators ON coordinators.user_id = users.id
+    ORDER BY users.name
+    `);
+    return rows;
+  }
+
+  async findById(id) {
+    const [row] = await db.query(
+      `
+      SELECT users.*
+      FROM users
+      INNER JOIN coordinators ON coordinators.user_id = users.id
+      WHERE users.id = $1
+    `,
+      [id]
+    );
+    return row;
+  }
+
+  async create(userId) {
     const [row] = await db.query(
       `
       INSERT INTO coordinators (user_id)

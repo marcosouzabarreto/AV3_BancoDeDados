@@ -1,7 +1,33 @@
 const db = require('../../database');
 
 class TeachersRepository {
-  async create({ userId }) {
+  async findAll() {
+    // const rows = await db.query(`
+    // SELECT users.*
+    // FROM users
+    // INNER JOIN teachers ON teachers.user_id = users.id
+    // ORDER BY users.name
+    // `);
+    const rows = await db.query(`
+      SELECT * FROM teachers
+    `);
+    return rows;
+  }
+
+  async findById(id) {
+    const [row] = await db.query(
+      `
+      SELECT users.*
+      FROM users
+      INNER JOIN teachers ON teachers.user_id = users.id
+      WHERE users.id = $1
+    `,
+      [id]
+    );
+    return row;
+  }
+
+  async create(userId) {
     const [row] = await db.query(
       `
       INSERT INTO teachers (user_id)

@@ -7,6 +7,7 @@ class UsersRepository {
     `);
     return rows;
   }
+
   async findById(id) {
     const [row] = await db.query(
       `
@@ -15,6 +16,18 @@ class UsersRepository {
       ORDER BY name
     `,
       [id]
+    );
+    return row;
+  }
+
+  async findByEmail(email) {
+    const [row] = await db.query(
+      `
+      SELECT *
+      FROM users
+      WHERE email = $1
+    `,
+      [email]
     );
     return row;
   }
