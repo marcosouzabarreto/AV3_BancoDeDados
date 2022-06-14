@@ -1,0 +1,8 @@
+.form-item-content {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+}
+.form-item-content > p {
+  margin: 0;
+}
