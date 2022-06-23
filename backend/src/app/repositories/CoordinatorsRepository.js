@@ -3,10 +3,10 @@ const db = require('../../database');
 class CoordinatorsRepository {
   async findAll() {
     const rows = await db.query(`
-    SELECT users.*
-    FROM users
-    INNER JOIN coordinators ON coordinators.user_id = users.id
-    ORDER BY users.name
+      SELECT users.*
+      FROM users
+      INNER JOIN coordinators ON coordinators.user_id = users.id
+      ORDER BY users.name
     `);
     return rows;
   }
