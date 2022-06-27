@@ -1,8 +1,8 @@
 const { Router } = require('express');
 const TeacherController = require('./app/controllers/TeacherController');
 const CoordinatorController = require('./app/controllers/CoordinatorController');
-
 const UserController = require('./app/controllers/UserController');
+const AdminController = require('./app/controllers/AdminController');
 
 const router = Router();
 
@@ -19,4 +19,10 @@ router.get('/teachers/:id', TeacherController.show);
 
 // COORDINATORS
 router.get('/coordinators', CoordinatorController.index);
+router.get('/coordinators/:id', CoordinatorController.show);
+
+// ADMINS
+router.get('/admins', AdminController.index);
+router.get('/admins/:id', AdminController.show);
+
 module.exports = router;
