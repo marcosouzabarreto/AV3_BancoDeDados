@@ -1,20 +1,40 @@
+:root{
+  --cor-primaria-success: rgb(190, 183, 183);
+  --cor-secundaria-success: rgb(1, 1, 20); 
+}
 .login-container {
   display: flex;
   justify-content: center;
-  margin-top: 80px;
+  margin-top:90px;
 }
 .login-content {
-  width: 50%;
+  width: 65%;
+  height: 400px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  
 
-  border-radius: 8px;
-  background: red;
+  border-radius: 20px;
+  background: rgb(134, 115, 151);
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
+  border-radius: 10px;
+  
+  
+
+}
+.btn{
+  border:none;
+  padding: 8px 10px 8px 10px;
+}
+
+.btn-login{
+  background-color: var(--cor-primaria-success);
+  outline: none;
+  color: white;
 }

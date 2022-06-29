@@ -12,7 +12,8 @@ export const Login = () => {
       email: ${email}
       password: ${password}
     `);
-    // TODO: Send this data to the backend, probably will be available in 1 week
+    // TODO: Send this data to the backend, probably will be available in 1 week. 
+    // It's been over a week btw  ASS:Tyrone. 
   };
 
   return (
@@ -34,7 +35,12 @@ export const Login = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </form>
-        <button type="submit" onClick={handleSubmitForm}>
+
+          //Vou fazer o css do botao, ja comecei aqui, mas vou formatar meu pc antes pq ta paia
+        <button type="submit" onClick={handleSubmitForm} className="btn btn-cadastro">
+          Faca seu cadastro
+        </button>
+        <button type="submit" onClick={handleSubmitForm} className="btn btn-login">
           Login
         </button>
       </div>
