@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { Navigate } from 'react-router-dom';
 import { FormItem } from '../../components/FormItem';
+import StoreContext from '../../components/Store/Context.js';
 import './style.css';
 
 export const Login = () => {
@@ -12,8 +14,17 @@ export const Login = () => {
       email: ${email}
       password: ${password}
     `);
-    // TODO: Send this data to the backend, probably will be available in 1 week.
-    // It's been over a week btw  ASS:Tyrone.
+
+    // TODO: Accept role in the local storage and use it to create private routes
+    // const {setToken} = useContext(StoreContext);
+    // const {token, role} = Api call from backend;
+    // if(token) {
+    //   setToken(token);
+    //   return <Navigate to='/privateroute' />
+    // } else {
+    //   setEmail('');
+    //   setPassword('');
+    // }
   };
 
   return (
