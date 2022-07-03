@@ -8,6 +8,16 @@ class Api {
     });
     return response;
   }
+
+  async createAccount({ name, email, password, role }) {
+    const response = await axios.post(`${baseUrl}/cadastro`, {
+      name,
+      email,
+      password,
+      role,
+    });
+    return response;
+  }
 }
 
 export default new Api();

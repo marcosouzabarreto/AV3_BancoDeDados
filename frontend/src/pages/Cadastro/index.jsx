@@ -2,21 +2,26 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './style.css';
 import { FormItem } from '../../components/FormItem';
+import api from '../../api';
 
 export const Cadastro = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');
+  const [role, setRole] = useState('');
 
   const navigate = useNavigate();
 
-  const handleSubmitForm = () => {
-    console.log(`
-          form submitted with values =>
-          email: ${email}
-          password: ${password}
-          nome: ${name}
-        `);
+  const handleSubmitForm = async () => {
+    const response = await api.createAccount({ name, email, password, role });
+    if (response) {
+      navigate('/login');
+    } else {
+      setEmail('');
+      setName('');
+      setPassword('');
+      setRole('');
+    }
   };
   return (
     <div className="cad-container">
@@ -45,6 +50,12 @@ export const Cadastro = () => {
             name={password}
             type="password"
             onChange={(e) => setPassword(e.target.value)}
+          />
+          <FormItem
+            title="Funcao"
+            name={role}
+            type="text"
+            onChange={(e) => setRole(e.target.value)}
           />
         </form>
 

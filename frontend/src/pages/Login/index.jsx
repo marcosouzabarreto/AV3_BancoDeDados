@@ -20,7 +20,7 @@ export const Login = () => {
       password: ${password}
     `);
 
-    const { token, role } = await api.login(email, password);
+    const { token, role } = await api.login({ email, password });
 
     if (token && role) {
       setToken(token);
@@ -43,7 +43,11 @@ export const Login = () => {
       <div className="login-content">
         <h1>Faca o login</h1>
 
-        <form name="login" className="login-form">
+        <form
+          name="login"
+          className="login-form"
+          onSubmit={(e) => e.preventDefault()}
+        >
           <FormItem
             title="Email"
             name={email}
