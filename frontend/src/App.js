@@ -1,6 +1,7 @@
 import { Login } from './pages/Login';
 import { Header } from './components/Header';
 import { Cadastro } from './pages/Cadastro';
+import { AdminHome } from './pages/AdminHome';
 import {
   BrowserRouter as Router,
   Route,
@@ -8,10 +9,9 @@ import {
   Navigate,
 } from 'react-router-dom';
 import StoreProvider from './components/Store/Provider';
-import { PrivateRoutes } from './Routes/Private/Private';
+import { AdminRoutes } from './routes/private/AdminRoutes';
 
 function App() {
-  const loggedIn = true;
   return (
     <Router>
       <StoreProvider>
@@ -22,7 +22,15 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />}></Route>
           <Route path="/login" element={<Login />}></Route>
           {/* TODO: Use private routes for every type of user*/}
-          {/* Example: <PrivateRoutes component={PrivateComponent} > */}
+
+          <Route
+            path="/admin-home"
+            element={
+              <AdminRoutes>
+                <AdminHome />
+              </AdminRoutes>
+            }
+          />
         </Routes>
       </StoreProvider>
     </Router>

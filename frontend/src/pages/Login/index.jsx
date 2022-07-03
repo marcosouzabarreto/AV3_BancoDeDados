@@ -1,30 +1,41 @@
 import React, { useState, useContext } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { FormItem } from '../../components/FormItem';
 import StoreContext from '../../components/Store/Context.js';
+import api from '../../api';
 import './style.css';
 
 export const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmitForm = () => {
+  const navigate = useNavigate();
+
+  const { setToken, setRole } = useContext(StoreContext);
+
+  const handleSubmitForm = async () => {
     console.log(`
       form submitted with values =>
       email: ${email}
       password: ${password}
     `);
 
-    // TODO: Accept role in the local storage and use it to create private routes
-    // const {setToken} = useContext(StoreContext);
-    // const {token, role} = Api call from backend;
-    // if(token) {
-    //   setToken(token);
-    //   return <Navigate to='/privateroute' />
-    // } else {
-    //   setEmail('');
-    //   setPassword('');
-    // }
+    const { token, role } = await api.login(email, password);
+
+    if (token && role) {
+      setToken(token);
+      setRole(role);
+      if (role === 'admin') {
+        return navigate('/admin-home');
+      } else if (role === 'coordinator') {
+        return navigate('/coordinator-home');
+      } else if (role === 'teacher') {
+        return navigate('/teacher-home');
+      }
+    } else {
+      setEmail('');
+      setPassword('');
+    }
   };
 
   return (
@@ -51,7 +62,7 @@ export const Login = () => {
         <div className="login-buttons-container">
           <button
             type="submit"
-            onClick={handleSubmitForm}
+            onClick={() => navigate('/cadastro')}
             className="btn btn-cadastro"
           >
             Faca seu cadastro

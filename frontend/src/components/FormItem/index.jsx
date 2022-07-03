@@ -7,7 +7,7 @@ export const FormItem = (props) => {
       <p>{props.title}</p>
       <input
         type={props.type}
-        placeholder="Email"
+        placeholder={props.title}
         onChange={props.onChange}
         value={props.name}
       />
