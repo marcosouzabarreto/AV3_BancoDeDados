@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FormItem } from '../../components/FormItem';
 import StoreContext from '../../components/Store/Context.js';
@@ -13,24 +13,29 @@ export const Login = () => {
 
   const { setToken, setRole } = useContext(StoreContext);
 
+  // useEffect(() => {
+  //   console.log('updated tokens to ', token, role);
+  // }, [token, role]);
+
   const handleSubmitForm = async () => {
-    console.log(`
-      form submitted with values =>
-      email: ${email}
-      password: ${password}
-    `);
+    const { token: userToken, role: userRole } = await api.login({
+      email,
+      password,
+    });
+    if (userToken && userRole) {
+      setToken(userToken);
+      setRole(userRole);
 
-    const { token, role } = await api.login({ email, password });
-
-    if (token && role) {
-      setToken(token);
-      setRole(role);
-      if (role === 'admin') {
-        return navigate('/admin-home');
-      } else if (role === 'coordinator') {
-        return navigate('/coordinator-home');
-      } else if (role === 'teacher') {
-        return navigate('/teacher-home');
+      // TODO: window.location.reload is a temporary fix
+      if (userRole === 'admin') {
+        navigate('/admin-home');
+        window.location.reload();
+      } else if (userRole === 'coordinator') {
+        navigate('/coordinator-home');
+        window.location.reload();
+      } else if (userRole === 'teacher') {
+        navigate('/teacher-home');
+        window.location.reload();
       }
     } else {
       setEmail('');

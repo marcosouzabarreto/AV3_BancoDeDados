@@ -1,20 +1,16 @@
-import { useCallback, useState } from 'react';
+import { useState } from 'react';
 import storage from './storage';
 
 export const useStorage = (key) => {
   const [state, setState] = useState(() => storage.get(key));
 
-  const set = useCallback(
-    (newValue) => {
-      storage.set(key, newValue);
-    },
-    [key]
-  );
+  const set = (newValue) => {
+    storage.set(key, newValue);
+  };
 
-  const remove = useCallback(() => {
+  const remove = () => {
     storage.remove(key);
     setState(undefined);
-  }, [key]);
-
+  };
   return [state, set, remove];
 };

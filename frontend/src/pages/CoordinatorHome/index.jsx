@@ -3,14 +3,14 @@ import { useContext } from 'react';
 import StoreContext from '../../components/Store/Context';
 import { useNavigate } from 'react-router-dom';
 
-export const AdminHome = () => {
+export const CoordinatorHome = () => {
   const { removeRole, removeToken } = useContext(StoreContext);
 
   const navigate = useNavigate();
 
   return (
     <div>
-      <div>You're a Admin</div>
+      <div>You're a Coordinator</div>
       <button
         onClick={() => {
           removeRole();

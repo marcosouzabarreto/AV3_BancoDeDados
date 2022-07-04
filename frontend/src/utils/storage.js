@@ -7,6 +7,7 @@ try {
 
   storage.set = (key, value) =>
     localStorage.setItem(key, JSON.stringify(value));
+
   storage.get = (key) => {
     const item = localStorage.getItem(key);
     try {
@@ -16,6 +17,7 @@ try {
       return null;
     }
   };
+
   storage.remove = (key) => localStorage.removeItem(key);
 } catch (err) {
   storage.set = Cookie.set;

@@ -3,6 +3,7 @@ const db = require('../../database');
 class Authenticator {
   async login(request, response) {
     const { email, password } = request.body;
+
     const [adminUser] = await db.query(
       `
       SELECT users.*

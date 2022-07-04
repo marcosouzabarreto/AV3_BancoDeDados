@@ -5,6 +5,8 @@ const StoreContext = createContext({
   role: null,
   setToken: () => {},
   setRole: () => {},
+  removeToken: () => {},
+  removeRole: () => {},
 });
 
 export default StoreContext;

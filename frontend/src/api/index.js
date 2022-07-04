@@ -6,7 +6,7 @@ class Api {
       email,
       password,
     });
-    return response;
+    return response.data;
   }
 
   async createAccount({ name, email, password, role }) {

@@ -9,7 +9,10 @@ import {
   Navigate,
 } from 'react-router-dom';
 import StoreProvider from './components/Store/Provider';
-import { AdminRoutes } from './routes/private/AdminRoutes';
+import { PrivateRoutes } from './routes/private/PrivateRoutes';
+import { UserNotAuthorized } from './pages/UserNotAuthorized';
+import { TeacherHome } from './pages/TeacherHome';
+import { CoordinatorHome } from './pages/CoordinatorHome';
 
 function App() {
   return (
@@ -22,13 +25,29 @@ function App() {
           <Route path="/cadastro" element={<Cadastro />}></Route>
           <Route path="/login" element={<Login />}></Route>
           {/* TODO: Use private routes for every type of user*/}
-
+          <Route path="/user-not-authorized" element={<UserNotAuthorized />} />
           <Route
             path="/admin-home"
             element={
-              <AdminRoutes>
+              <PrivateRoutes allowedRoles={['admin']}>
                 <AdminHome />
-              </AdminRoutes>
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path="/teacher-home"
+            element={
+              <PrivateRoutes allowedRoles={['teacher']}>
+                <TeacherHome />
+              </PrivateRoutes>
+            }
+          />
+          <Route
+            path="/coordinator-home"
+            element={
+              <PrivateRoutes allowedRoles={['coordinator']}>
+                <CoordinatorHome />
+              </PrivateRoutes>
             }
           />
         </Routes>
