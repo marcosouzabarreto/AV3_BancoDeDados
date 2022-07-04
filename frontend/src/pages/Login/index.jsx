@@ -74,7 +74,7 @@ export const Login = () => {
             onClick={() => navigate('/cadastro')}
             className="btn btn-cadastro"
           >
-            Faca seu cadastro
+            Faça seu cadastro
           </button>
           <button
             type="submit"

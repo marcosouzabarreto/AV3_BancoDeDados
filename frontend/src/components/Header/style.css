@@ -2,5 +2,28 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: rgb(73, 72, 72);
+  background: rgb(228, 220, 220);
+}
+
+.header-title{
+  font-size: 35px;
+  font-style: italic;
+  color: black;
+}
+
+.btn {
+  border: none;
+  padding: 8px 10px 8px 10px;
+}
+.btn:hover {
+    background-color: blue;
+    transform: scale(1.1);
+    transition: all 0.5s;
+}
+
+.btn-primary {
+  outline: none;
+  font-style: oblique;
+  color: black;
+  font-size: 25px;
 }

@@ -1,15 +1,42 @@
+:root {
+    --cor-primaria-success: rgb(122, 116, 116);
+    --cor-secundaria-success: rgb(193, 193, 204);
+  }
+
 .cad-container{
     display: flex;
     justify-content: center;
-    margin-top: 120px;
+    margin-top: 90px;
 }
 .cad-content{
-    width: 50%;
+    width: 65%;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-
+  
     border-radius: 20px;
-    background: #3200e7;
+    background: rgb(225, 222, 228);
+}
+.cad-form{
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    font-size: 20px;
+    font-style: italic;
+}
+.btn {
+    border: none;
+    padding: 8px 10px 8px 10px;
+  }
+.btn-returnt-login {
+    background-color: white;
+    outline: none;
+    color: black;
+}
+.btn-cds{
+    background-color: var(--cor-primaria-success);
+    outline: none;
+    color: white;
 }
