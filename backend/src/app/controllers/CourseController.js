@@ -13,8 +13,8 @@ class CourseController {
   }
 
   async store(request, response) {
-    const { id } = request.params;
-    const course = await CoursesRepository.create(id);
+    const { coord_id, name } = request.body;
+    const course = await CoursesRepository.create(name, { coord_id });
     response.json(course);
   }
 

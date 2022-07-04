@@ -2,10 +2,11 @@ const db = require('../../database');
 
 class CoursesRepository {
   async findAll() {
-    await db.query(`
+    const rows = await db.query(`
       SELECT * 
       FROM courses
     `);
+    return rows;
   }
 
   async findById(id) {
@@ -19,14 +20,14 @@ class CoursesRepository {
     );
   }
 
-  async create(coord_id) {
+  async create(name, { coord_id }) {
     const [row] = await db.query(
       `
-      INSERT INTO courses (coordinator_id)
-      VALUES($1)
+      INSERT INTO courses (name, coordinator_id)
+      VALUES($1, $2)
       RETURNING *
     `,
-      [coord_id]
+      [name, coord_id]
     );
     return row;
   }

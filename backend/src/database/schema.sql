@@ -30,6 +30,7 @@ CREATE TABLE IF NOT EXISTS coordinators (
 
 CREATE TABLE IF NOT EXISTS courses (
   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR NOT NULL,
   coordinator_id INT,
 
   FOREIGN KEY(coordinator_id) REFERENCES coordinators(id) ON DELETE CASCADE
