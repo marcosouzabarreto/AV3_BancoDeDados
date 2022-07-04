@@ -52,19 +52,29 @@ export const Cadastro = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
           <FormItem
-            title="Funcao"
+            title="Funçao"
             name={role}
             type="text"
             onChange={(e) => setRole(e.target.value)}
           />
         </form>
 
-        <button type="submit" onClick={() => navigate('/login')}>
-          Faca seu Login
-        </button>
-        <button type="submit" onClick={handleSubmitForm}>
-          Cadastro
-        </button>
+        <div className="login-buttons-container">
+          <button
+            type="submit"
+            onClick={() => navigate('/login')}
+            className="btn btn-returnt-login"
+          >
+            Faça seu login
+          </button>
+          <button
+            type="submit"
+            onClick={handleSubmitForm}
+            className="btn btn-cds"
+          >
+            Cadastre-se
+          </button>
+        </div>
       </div>
     </div>
   );

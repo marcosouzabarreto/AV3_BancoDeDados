@@ -1,6 +1,6 @@
 :root {
-  --cor-primaria-success: rgb(190, 183, 183);
-  --cor-secundaria-success: rgb(1, 1, 20);
+  --cor-primaria-success: rgb(122, 116, 116);
+  --cor-secundaria-success: rgb(164, 164, 168);
 }
 .login-container {
   display: flex;
@@ -16,13 +16,15 @@
   align-items: center;
 
   border-radius: 20px;
-  background: rgb(134, 115, 151);
+  background: rgb(225, 222, 228);
 }
 
 .login-form {
   display: flex;
   flex-direction: column;
   border-radius: 10px;
+  font-style: italic;
+  font-size: 20px;
 }
 .btn {
   border: none;
