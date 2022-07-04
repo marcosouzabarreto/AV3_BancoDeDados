@@ -19,12 +19,12 @@ function App() {
     <Router>
       <StoreProvider>
         <Header />
+        <AdminHome />
 
-        <Routes>
+    {/*     <Routes>
           <Route path="/" exact element={<Navigate to="/login" />}></Route>
           <Route path="/cadastro" element={<Cadastro />}></Route>
           <Route path="/login" element={<Login />}></Route>
-          {/* TODO: Use private routes for every type of user*/}
           <Route path="/user-not-authorized" element={<UserNotAuthorized />} />
           <Route
             path="/admin-home"
@@ -50,7 +50,7 @@ function App() {
               </PrivateRoutes>
             }
           />
-        </Routes>
+        </Routes> */}
       </StoreProvider>
     </Router>
   );
