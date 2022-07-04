@@ -19,16 +19,16 @@ class CoursesRepository {
     );
   }
 
-  async create({ coord_id }) {
-    await db.query(
+  async create(coord_id) {
+    const [row] = await db.query(
       `
-      INSERT 
-      INTO courses(coordinator_id)
+      INSERT INTO courses (coordinator_id)
       VALUES($1)
       RETURNING *
     `,
       [coord_id]
     );
+    return row;
   }
 
   async delete({ id }) {

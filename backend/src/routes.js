@@ -28,6 +28,8 @@ router.get('/admins', AdminController.index);
 router.get('/admins/:id', AdminController.show);
 
 // COURSES
+router.get('/courses', CourseController.index);
+router.get('/courses/:id', CourseController.show);
 router.post('/courses/:id', CourseController.store);
 router.delete('/courses/:id', CourseController.delete);
 
