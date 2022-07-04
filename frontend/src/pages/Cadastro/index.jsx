@@ -5,6 +5,7 @@ import { FormItem } from '../../components/FormItem';
 import api from '../../api';
 
 export const Cadastro = () => {
+  
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [name, setName] = useState('');

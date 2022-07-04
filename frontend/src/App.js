@@ -19,7 +19,8 @@ function App() {
     <Router>
       <StoreProvider>
         <Header />
-        <AdminHome />
+        {/* <AdminHome /> */}
+        <CoordinatorHome />
 
     {/*     <Routes>
           <Route path="/" exact element={<Navigate to="/login" />}></Route>

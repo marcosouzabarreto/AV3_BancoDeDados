@@ -1,0 +1,23 @@
+.btn-coordinator{
+    margin: 0%;
+}
+.coordinator-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+}
+.coordinator-content {
+  width: 65%;
+  height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  border-radius: 20px;
+  background: rgb(225, 222, 228);
+}
+.btn-container{
+  display: flex;
+  align-items: flex-end;
+}
