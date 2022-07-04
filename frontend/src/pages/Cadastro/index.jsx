@@ -72,7 +72,7 @@ export const Cadastro = () => {
             onClick={handleSubmitForm}
             className="btn btn-cds"
           >
-            Cadastra-se
+            Cadastre-se
           </button>
         </div>
       </div>
