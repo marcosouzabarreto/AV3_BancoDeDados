@@ -16,7 +16,20 @@ class Api {
       password,
       role,
     });
-    return response;
+    return response.data;
+  }
+
+  async createCourse(name, { coord_id }) {
+    const response = await axios.post(`${baseUrl}/courses`, {
+      coord_id,
+      name,
+    });
+    return response.data;
+  }
+
+  async getCoordinatorId(id) {
+    const response = await axios.get(`${baseUrl}/coordinators/${id}`);
+    return response.data.coordinator_id;
   }
 }
 

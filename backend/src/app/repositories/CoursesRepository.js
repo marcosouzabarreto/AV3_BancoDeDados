@@ -10,7 +10,7 @@ class CoursesRepository {
   }
 
   async findById(id) {
-    await db.query(
+    const [row] = await db.query(
       `
       SELECT *
       FROM courses
@@ -18,6 +18,7 @@ class CoursesRepository {
     `,
       [id]
     );
+    return row;
   }
 
   async create(name, { coord_id }) {
