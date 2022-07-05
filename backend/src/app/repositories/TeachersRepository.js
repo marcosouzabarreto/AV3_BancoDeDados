@@ -2,14 +2,8 @@ const db = require('../../database');
 
 class TeachersRepository {
   async findAll() {
-    // const rows = await db.query(`
-    // SELECT users.*
-    // FROM users
-    // INNER JOIN teachers ON teachers.user_id = users.id
-    // ORDER BY users.name
-    // `);
     const rows = await db.query(`
-    SELECT users.*
+    SELECT users.*, teachers.id as teacher_id
     FROM users
     INNER JOIN teachers ON teachers.user_id = users.id
     `);
@@ -51,6 +45,21 @@ class TeachersRepository {
       [userId]
     );
     return deleteOp;
+  }
+
+  async showTeacherSubjects(teacher_id) {
+    const rows = await db.query(
+      `
+    SELECT subjects.*  
+    FROM subjects 
+    INNER JOIN classes ON classes.subject_id = subjects.id
+    INNER JOIN teachers ON classes.teacher_id = teachers.id
+    WHERE teachers.id = $1
+    `,
+      [teacher_id]
+    );
+
+    return rows;
   }
 }
 

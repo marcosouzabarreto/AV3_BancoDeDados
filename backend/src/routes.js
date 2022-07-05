@@ -7,6 +7,7 @@ const AdminController = require('./app/controllers/AdminController');
 const Authenticator = require('./app/utils/Authenticator');
 const CourseController = require('./app/controllers/CourseController');
 const SubjectController = require('./app/controllers/SubjectController');
+const ClassController = require('./app/controllers/ClassController');
 
 const router = Router();
 
@@ -19,6 +20,7 @@ router.post('/users', UserController.store);
 // TEACHERS
 router.get('/teachers', TeacherController.index);
 router.get('/teachers/:id', TeacherController.show);
+router.get('/teachers/subjects/:id', TeacherController.showTeacherSubjects);
 
 // COORDINATORS
 router.get('/coordinators', CoordinatorController.index);
@@ -43,5 +45,8 @@ router.post('/cadastro', UserController.store); // TODO: figure out how to make 
 // SUBJECTS
 router.get('/subjects', SubjectController.index);
 router.post('/subjects', SubjectController.store);
+
+// CLASSES
+router.post('/classes', ClassController.store);
 
 module.exports = router;
