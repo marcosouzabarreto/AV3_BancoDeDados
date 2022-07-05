@@ -17,6 +17,12 @@ class TeacherController {
     await TeachersRepository.delete(id);
     response.sendStatus(204);
   }
+
+  async showTeacherSubjects(request, response) {
+    const { id } = request.params;
+    const res = await TeachersRepository.showTeacherSubjects(id);
+    response.json(res);
+  }
 }
 
 module.exports = new TeacherController();

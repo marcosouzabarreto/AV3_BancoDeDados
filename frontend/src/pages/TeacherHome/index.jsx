@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import { FormItem } from '../../components/FormItem';
 
 
@@ -9,6 +9,7 @@ export const TeacherHome = () => {
 
   return (
     <div>
+
       <div><button id='btnCord' className='btn btn-teacher' type="submit"><h2>Area do Professor</h2></button></div>
     <div>
           <div className="teacher-container">
@@ -38,9 +39,8 @@ export const TeacherHome = () => {
           >
           </FormItem>
         </form>
+
       </div>
     </div>
-    </div>
-    </div> 
   );
 };

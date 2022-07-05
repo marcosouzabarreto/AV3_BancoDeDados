@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect } from 'react';
-import "./style.css";
+import './style.css';
 import { useContext } from 'react';
 import StoreContext from '../../components/Store/Context';
 import { useNavigate } from 'react-router-dom';
@@ -15,8 +14,9 @@ export const CoordinatorHome = () => {
   const [coordCourses, setCoordCourses] = useState([]);
   const [loading, setLoading] = useState(false);
 
+
   const navigate = useNavigate();
- 
+
 
   useEffect(() => {
     setLoading(true);
@@ -45,7 +45,6 @@ export const CoordinatorHome = () => {
   return false ? (
     //TODO remove false 
     <div>
-
       <div>
         <h1>PAGE LOADING</h1>
       </div>
@@ -111,10 +110,10 @@ export const CoordinatorHome = () => {
       >
         Logout
       </button>
+
       </div>
       </div>
       </div>
     </div>
-    
   );
 };
