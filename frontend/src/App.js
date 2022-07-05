@@ -19,9 +19,8 @@ function App() {
     <Router>
       <StoreProvider>
         <Header />
-        
-        <AdminHome />
-     {/*  <Routes>
+
+        <Routes>
           <Route path="/" exact element={<Navigate to="/login" />}></Route>
           <Route path="/cadastro" element={<Cadastro />}></Route>
           <Route path="/login" element={<Login />}></Route>
@@ -51,7 +50,7 @@ function App() {
               </PrivateRoutes>
             }
           />
-        </Routes>  */}
+        </Routes>
       </StoreProvider>
     </Router>
   );

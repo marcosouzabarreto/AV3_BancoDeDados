@@ -6,6 +6,7 @@ const AdminController = require('./app/controllers/AdminController');
 
 const Authenticator = require('./app/utils/Authenticator');
 const CourseController = require('./app/controllers/CourseController');
+const SubjectController = require('./app/controllers/SubjectController');
 
 const router = Router();
 
@@ -31,11 +32,16 @@ router.get('/admins/:id', AdminController.show);
 router.get('/courses', CourseController.index);
 router.get('/courses/:id', CourseController.show);
 router.get('/courses/coordinator/:id', CourseController.showByCoordinatorId);
+// router.get('/courses/subjects/:id', CourseController.showCourseSubjects);
 router.post('/courses', CourseController.store);
 router.delete('/courses/:id', CourseController.delete);
 
 // LOGIN
 router.post('/login', Authenticator.login);
 router.post('/cadastro', UserController.store); // TODO: figure out how to make this look prettier
+
+// SUBJECTS
+router.get('/subjects', SubjectController.index);
+router.post('/subjects', SubjectController.store);
 
 module.exports = router;
