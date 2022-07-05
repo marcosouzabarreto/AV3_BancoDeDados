@@ -1,0 +1,28 @@
+.admin-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 45px;
+}
+
+.admin-content {
+    width: 65%;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border-radius: 20px;
+    background: rgb(225, 222, 228);
+}
+
+.admin-form {
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    font-style: italic;
+    font-size: 20px;
+}
+.btn{
+    margin-top: 0%; 
+}

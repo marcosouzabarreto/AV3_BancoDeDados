@@ -14,9 +14,11 @@
 .btn {
   border: none;
   padding: 8px 10px 8px 10px;
+  display: flex;
+  align-items: flex-end;
 }
 .btn:hover {
-    background-color: blue;
+    background-color: rgb(60, 60, 66);
     transform: scale(1.1);
     transition: all 0.5s;
 }
