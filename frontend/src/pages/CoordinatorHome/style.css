@@ -1,5 +1,6 @@
-.btn-coordinator{
-    margin: 0%;
+:root {
+  --cor-primaria-success: rgb(122, 116, 116);
+  --cor-secundaria-success: rgb(164, 164, 168);
 }
 .coordinator-container {
   display: flex;
@@ -17,7 +18,64 @@
   border-radius: 20px;
   background: rgb(225, 222, 228);
 }
-.btn-container{
+.coordinator-form{
   display: flex;
-  align-items: flex-end;
+  flex-direction: column;
+  border-radius: 10px;
+  font-style: italic;
+  font-size: 20px;
+}
+.curso-container{
+  display: flex;
+  justify-content: center;
+  margin-top: 45px;
+}
+.curso-content{
+  align-items: center;
+  display: flex;
+  border-radius: 20px;
+  background: rgb(119, 116, 121);
+}
+.curso-form{
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  font-style: italic;
+  font-size: 20px;
+}
+
+.btn {
+  border: none;
+  padding: 8px 10px 8px 10px;
+}
+.btn-cursos{
+  display: flex;
+  background-color: var(--cor-primaria-success);
+  outline: none;
+  color: white;
+}
+btn-teacher{
+  display:flex;
+  background-color: var(--cor-secundaria-success);
+  outline: none;
+  color: black;
+}
+
+.select-teacher{
+  display: flex;
+  border: none;
+  font: italic;
+  font-size: 15px;
+}
+.select-curso{
+  display: flex;
+  border: none;
+  font: italic;
+  font-size: 15px;
+}
+.btn-lougout{
+  display: flex;
+  background-color: var(--cor-primaria-success);
+  outline: none;
+  color: white;
 }

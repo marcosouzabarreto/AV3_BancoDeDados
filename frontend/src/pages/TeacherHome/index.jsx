@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import { FormItem } from '../../components/FormItem';
-import { Drawer } from '../../components/Drawer';
+
 
 export const TeacherHome = () => {
   const [email, setEmail] = useState('');
@@ -9,7 +9,6 @@ export const TeacherHome = () => {
 
   return (
     <div>
-      <Drawer />
       <div><button id='btnCord' className='btn btn-teacher' type="submit"><h2>Area do Professor</h2></button></div>
     <div>
           <div className="teacher-container">

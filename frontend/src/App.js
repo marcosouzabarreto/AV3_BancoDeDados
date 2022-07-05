@@ -20,7 +20,7 @@ function App() {
       <StoreProvider>
         <Header />
         
-        <AdminHome />
+        <CoordinatorHome />
      {/*  <Routes>
           <Route path="/" exact element={<Navigate to="/login" />}></Route>
           <Route path="/cadastro" element={<Cadastro />}></Route>
