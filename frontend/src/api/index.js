@@ -31,6 +31,11 @@ class Api {
     const response = await axios.get(`${baseUrl}/coordinators/${id}`);
     return response.data.coordinator_id;
   }
+
+  async getCoordinatorCourses(id) {
+    const response = await axios.get(`${baseUrl}/courses/coordinator/${id}`);
+    return response.data;
+  }
 }
 
 export default new Api();

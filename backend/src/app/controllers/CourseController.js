@@ -23,6 +23,14 @@ class CourseController {
     await CoursesRepository.delete(id);
     response.sendStatus(204);
   }
+
+  async showByCoordinatorId(request, response) {
+    const { id } = request.params;
+    const courses = await CoursesRepository.findByCoordinatorId({
+      coord_id: id,
+    });
+    response.json(courses);
+  }
 }
 
 module.exports = new CourseController();

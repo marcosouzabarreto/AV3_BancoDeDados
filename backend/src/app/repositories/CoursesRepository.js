@@ -21,6 +21,19 @@ class CoursesRepository {
     return row;
   }
 
+  async findByCoordinatorId({ coord_id }) {
+    const rows = await db.query(
+      `
+    SELECT *
+    FROM courses
+    WHERE coordinator_id = $1
+    `,
+      [coord_id]
+    );
+
+    return rows;
+  }
+
   async create(name, { coord_id }) {
     const [row] = await db.query(
       `
