@@ -42,8 +42,7 @@ export const CoordinatorHome = () => {
     }
   };
 
-  return false ? (
-    //TODO remove false 
+  return loading ? (
     <div>
       <div>
         <h1>PAGE LOADING</h1>
