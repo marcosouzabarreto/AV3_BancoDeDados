@@ -56,6 +56,18 @@ class CoursesRepository {
       [id]
     );
   }
+
+  async showCourseSubjects(id) {
+    const rows = await db.query(
+      `
+      SELECT subjects.*
+      FROM subjects
+      INNER JOIN course_subjects ON course_subjects.course_id = $1
+    `,
+      [id]
+    );
+    return rows;
+  }
 }
 
 module.exports = new CoursesRepository();

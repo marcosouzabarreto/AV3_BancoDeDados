@@ -21,6 +21,10 @@ class CourseController {
 
   async delete(request, response) {
     const { id } = request.params;
+    const { role } = request.body;
+    if (role !== 'admin') {
+      return response.status(400).json({ error: 'usuario nao autorizado' });
+    }
     await SubjectsRepository.delete(id);
     response.sendStatus(204);
   }

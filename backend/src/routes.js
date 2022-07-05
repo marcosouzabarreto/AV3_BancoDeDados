@@ -34,7 +34,7 @@ router.get('/admins/:id', AdminController.show);
 router.get('/courses', CourseController.index);
 router.get('/courses/:id', CourseController.show);
 router.get('/courses/coordinator/:id', CourseController.showByCoordinatorId);
-// router.get('/courses/subjects/:id', CourseController.showCourseSubjects);
+router.get('/courses/subjects/:id', CourseController.showCourseSubjects);
 router.post('/courses', CourseController.store);
 router.delete('/courses/:id', CourseController.delete);
 
@@ -45,8 +45,10 @@ router.post('/cadastro', UserController.store); // TODO: figure out how to make 
 // SUBJECTS
 router.get('/subjects', SubjectController.index);
 router.post('/subjects', SubjectController.store);
+router.delete('/subjects/:id', SubjectController.delete);
 
 // CLASSES
 router.post('/classes', ClassController.store);
+router.delete('/classes/:id', ClassController.delete);
 
 module.exports = router;
