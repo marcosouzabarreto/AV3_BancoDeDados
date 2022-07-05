@@ -20,7 +20,6 @@ function App() {
       <StoreProvider>
         <Header />
 
-        
 
         <Routes>
 
@@ -54,7 +53,7 @@ function App() {
             }
           />
         </Routes>
-     </StoreProvider>
+      </StoreProvider>
     </Router>
   );
 }

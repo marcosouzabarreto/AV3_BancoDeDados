@@ -1,66 +1,26 @@
-import React, { useState, useContext } from 'react';
-import StoreContext from '../../components/Store/Context';
-import { useEffect } from 'react';
-import api from '../../api';
+import React from 'react';
+import "./style.css";
 
-
-export const TeacherHome = () => {;
-  const { removeRole, removeToken} = useContext(StoreContext);
-
-  const navigate = useNavigate();
-  const [materias, setMaterias] = useState([]);
-  const [loading, setLoading] = useState(false);
-
-  const { token } = useContext(StoreContext);
-
-  useEffect(() => {
-    setLoading(true);
-    api.getTeacherId(token).then((r) => {
-      api
-        .getTeacherSubjects(r)
-        .then((r) => {
-          setMaterias(r);
-        })
-        .finally(() => {
-          setLoading(false);
-        });
-    });
-  }, [token]);
+export const TeacherHome = () => {
 
   return (
-    <div>
-      <div>
-        <div className="teacher-container">
-          <div className="teacher-content">
-            <div className="teacher-form">
-              <h1>Área do professor</h1>
-              <h4>Seu perfil</h4>
-              <form
-                name='Teacher'
-                className='Teacher-form'
-              >
-                <select className='select-curso'>
-                  <option disabled selected>Materia</option>
-                  <option value="Materia 1">Fisica</option>
-                  <option value="Materia 2">Matematica</option>
-                  <option value="Materia 3">Biologia</option>
-                </select>
-                <div className="login-buttons-container">
-                  <button className='btn btn-logout'
-                    onClick={() => {
-                      removeRole();
-                      removeToken();
-                      navigate('/login');
-                    }}
-                  >
-                    Logout
-                  </button>
-                  <button className="btn btn-cursos">Entrar na materia</button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
+    <div className="teacher-container">
+      <div className="teacher-content">
+        <h1>Área do Professor</h1>
+
+        <h2>Seleciona sua materia</h2>
+        <form
+          name='Teacher'
+          className='teacher-form'
+        >
+          <select className='select-curso'>
+            <option disabled selected>Materia</option>
+            <option value="Materia 1">Fisica</option>
+            <option value="Materia 2">Matematica</option>
+            <option value="Materia 3">Biologia</option>
+          </select>
+        </form>
+        <button className='btn'>Selecionar</button>
       </div>
     </div>
   );
