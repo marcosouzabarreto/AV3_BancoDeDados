@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import StoreContext from '../../components/Store/Context';
 import { useEffect } from 'react';
 import api from '../../api';
-import { FormItem } from '../../components/FormItem';
 
 
 export const TeacherHome = () => {;
@@ -37,9 +36,8 @@ export const TeacherHome = () => {;
               <h1>Área do professor</h1>
               <h4>Seu perfil</h4>
               <form
-                name='Admin'
-                className='admin-form'
-                onSubmit={(e) => e.preventDefault()}
+                name='Teacher'
+                className='Teacher-form'
               >
                 <select className='select-curso'>
                   <option disabled selected>Materia</option>
