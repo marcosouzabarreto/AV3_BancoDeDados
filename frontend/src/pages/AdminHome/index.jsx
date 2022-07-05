@@ -1,20 +1,16 @@
 import React, {useState} from 'react';
 import { FormItem } from '../../components/FormItem';
 import './style.css';
-import { Drawer  } from '../../components/Drawer';
 
 export const AdminHome = () => {
 
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [funcao, setFuncao] = useState();
- 
- 
-
 
   return (
     <div>
-      <Drawer/>
+      
       <button className="btn btn-admin"><h2>Gerenciar Usuarios</h2></button>
     <div className="admin-container">
         <div className="admin-content">

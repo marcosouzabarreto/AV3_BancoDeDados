@@ -5,7 +5,7 @@ import StoreContext from '../../components/Store/Context';
 import { useNavigate } from 'react-router-dom';
 import api from '../../api';
 import { FormItem } from '../../components/FormItem';
-import { Drawer } from '../../components/Drawer';
+
 
 export const CoordinatorHome = () => {
   const { removeRole, removeToken, token } = useContext(StoreContext);
@@ -13,11 +13,10 @@ export const CoordinatorHome = () => {
   const [coordId, setCoordId] = useState(null);
   const [coordCourses, setCoordCourses] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [funcao, setFuncao] = useState();
+
 
   const navigate = useNavigate();
+
 
   useEffect(() => {
     setLoading(true);
@@ -43,31 +42,56 @@ export const CoordinatorHome = () => {
     }
   };
 
-  return loading ? (
+  return false ? (
+    //TODO remove false 
     <div>
       <div>
         <h1>PAGE LOADING</h1>
       </div>
     </div>
   ) : (
-    <div>
-      <div>You're a Coordinator - id:{coordId}</div>
+    <div className='coordinator-container'>
+      <div className='coordinator-content'>
       <div>
-        <h1>Create Course</h1>
-        <input
+        <h1>Criando curso</h1>
+         <form
+          name='Curso'
+          className='coordinator-form'
+        >
+          <FormItem
+          title='Nome do curso'
           type="text"
           onChange={(e) => setCourseName(e.target.value)}
           value={courseName}
           placeholder="Nome do curso"
-        />
-        <button onClick={handleCreateCourse}> CRIAR CURSO</button>
+          />
+           <button onClick={handleCreateCourse} className="btn btn-cursos"> CRIAR CURSO</button>
+          <h2>Adicionando professor</h2>
+          <select className='select-teacher'>
+            <option disabled selected>Professor</option>
+            <option value="Professor 1">Marco</option>
+            <option value="Professor 2">Pedro</option>
+            <option value="Professor 3">Caio</option>
+            <option value="Professor 4">Celso</option>
+          </select>
+          <select className='select-curso'>
+            <option disabled selected>Materia</option>
+            <option value="Materia 1">Fisica</option>
+            <option value="Materia 2">Matematica</option>
+            <option value="Materia 3">Biologia</option>
+          </select>
+          <button onClick={handleCreateCourse} className="btn btn-teacher">Adicionar</button>
+          </form>
+      </div>
       </div>
 
-      <div>
-        <h1>Your courses</h1>
+      <div className='curso-container'>
+        <div className='curso-content'>
+        <div className='curso-form'>   
+        <h2>Seus Cursos</h2>
         {coordCourses.length === 0 ? (
           <div>
-            <h1>Sem cursos para esse usuario</h1>
+            <h4>Sem cursos para esse usuario</h4>
           </div>
         ) : (
           coordCourses.map((course) => (
@@ -77,8 +101,7 @@ export const CoordinatorHome = () => {
             </>
           ))
         )}
-      </div>
-      <button
+         <button className='btn btn-logout'
         onClick={() => {
           removeRole();
           removeToken();
@@ -88,48 +111,8 @@ export const CoordinatorHome = () => {
         Logout
       </button>
 
-      <Drawer />
-      <div>
-        <button id="btnCord" className="btn btn-coordinator" type="submit">
-          <h2>Gerenciar Tarefas</h2>
-        </button>
       </div>
-      <div className="coordinator-container">
-        <div className="coordinator-content">
-          <form
-            name="Admin"
-            className="admin-form"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <FormItem
-              title="Nome"
-              name={name}
-              type="text"
-              onChange={(e) => setName(e.target.value)}
-            />
-            <FormItem
-              title="Email"
-              name={email}
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-            <FormItem
-              title="Funçao"
-              name={funcao}
-              type="select"
-              onChange={(e) => setFuncao(e.target.value)}
-            >
-              <option value="Professor">Professor</option>
-              <option value="Cordenador">Cordenador</option>
-            </FormItem>
-            <FormItem
-              title="Email"
-              name={email}
-              type="email"
-              onChange={(e) => setEmail(e.target.value)}
-            />
-          </form>
-        </div>
+      </div>
       </div>
     </div>
   );
