@@ -9,7 +9,9 @@ class TeachersRepository {
     // ORDER BY users.name
     // `);
     const rows = await db.query(`
-      SELECT * FROM teachers
+    SELECT users.*
+    FROM users
+    INNER JOIN teachers ON teachers.user_id = users.id
     `);
     return rows;
   }

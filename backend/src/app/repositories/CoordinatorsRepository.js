@@ -3,7 +3,7 @@ const db = require('../../database');
 class CoordinatorsRepository {
   async findAll() {
     const rows = await db.query(`
-      SELECT users.*
+      SELECT users.*, coordinators.id AS coordinator_id
       FROM users
       INNER JOIN coordinators ON coordinators.user_id = users.id
       ORDER BY users.name
@@ -14,7 +14,7 @@ class CoordinatorsRepository {
   async findById(id) {
     const [row] = await db.query(
       `
-      SELECT users.*
+      SELECT users.*, coordinators.id AS coordinator_id
       FROM users
       INNER JOIN coordinators ON coordinators.user_id = users.id
       WHERE users.id = $1

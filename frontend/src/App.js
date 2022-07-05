@@ -25,6 +25,7 @@ function App() {
           <Route path="/" exact element={<Navigate to="/login" />}></Route>
           <Route path="/cadastro" element={<Cadastro />}></Route>
           <Route path="/login" element={<Login />}></Route>
+
           <Route path="/user-not-authorized" element={<UserNotAuthorized />} />
           <Route
             path="/admin-home"

@@ -67,7 +67,6 @@ export const Login = () => {
           />
         </form>
 
-        {/* //Vou fazer o css do botao, ja comecei aqui, mas vou formatar meu pc antes pq ta paia */}
         <div className="login-buttons-container">
           <button
             type="submit"

@@ -5,6 +5,7 @@ const UserController = require('./app/controllers/UserController');
 const AdminController = require('./app/controllers/AdminController');
 
 const Authenticator = require('./app/utils/Authenticator');
+const CourseController = require('./app/controllers/CourseController');
 
 const router = Router();
 
@@ -25,6 +26,13 @@ router.get('/coordinators/:id', CoordinatorController.show);
 // ADMINS
 router.get('/admins', AdminController.index);
 router.get('/admins/:id', AdminController.show);
+
+// COURSES
+router.get('/courses', CourseController.index);
+router.get('/courses/:id', CourseController.show);
+router.get('/courses/coordinator/:id', CourseController.showByCoordinatorId);
+router.post('/courses', CourseController.store);
+router.delete('/courses/:id', CourseController.delete);
 
 // LOGIN
 router.post('/login', Authenticator.login);
