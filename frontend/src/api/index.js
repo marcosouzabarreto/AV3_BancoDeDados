@@ -36,6 +36,16 @@ class Api {
     const response = await axios.get(`${baseUrl}/courses/coordinator/${id}`);
     return response.data;
   }
+
+  async getTeacherId(id) {
+    const response = await axios.get(`${baseUrl}/teachers/${id}`);
+    return response.data.teacher_id;
+  }
+
+  async getTeacherSubjects(id) {
+    const response = await axios.get(`${baseUrl}/teachers/subjects/${id}`);
+    return response.data;
+  }
 }
 
 export default new Api();

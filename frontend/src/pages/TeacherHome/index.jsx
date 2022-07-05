@@ -1,10 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import StoreContext from '../../components/Store/Context';
+import { useEffect } from 'react';
+import api from '../../api';
 import { FormItem } from '../../components/FormItem';
 
 export const TeacherHome = () => {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
-  const [materia, setMateria] = useState();
+  const [materias, setMaterias] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const { token } = useContext(StoreContext);
+
+  useEffect(() => {
+    setLoading(true);
+    api.getTeacherId(token).then((r) => {
+      api
+        .getTeacherSubjects(r)
+        .then((r) => {
+          setMaterias(r);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    });
+  }, [token]);
 
   return (
     <div>
@@ -33,12 +53,6 @@ export const TeacherHome = () => {
                 type="email"
                 onChange={(e) => setEmail(e.target.value)}
               />
-              <FormItem
-                title="Materia"
-                name={materia}
-                type="select"
-                onChange={(e) => setMateria(e.target.value)}
-              ></FormItem>
             </form>
           </div>
         </div>

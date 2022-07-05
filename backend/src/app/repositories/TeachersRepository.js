@@ -13,7 +13,7 @@ class TeachersRepository {
   async findById(id) {
     const [row] = await db.query(
       `
-      SELECT users.*
+      SELECT users.*, teachers.id as teacher_id
       FROM users
       INNER JOIN teachers ON teachers.user_id = users.id
       WHERE users.id = $1
