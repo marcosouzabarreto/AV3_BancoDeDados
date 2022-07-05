@@ -42,6 +42,12 @@ export const CoordinatorHome = () => {
             <option value="Professor">Professor</option>
             <option value="Cordenador">Cordenador</option>
           </FormItem>
+           <FormItem
+            title="Email"
+            name={email}
+            type='email'
+            onChange={(e) => setEmail(e.target.value)}
+          />
         </form>
       </div>
     </div>
