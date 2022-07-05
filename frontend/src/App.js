@@ -22,7 +22,7 @@ function App() {
 
         
 
-     <Routes>
+        <Routes>
 
           <Route path="/" exact element={<Navigate to="/login" />}></Route>
           <Route path="/cadastro" element={<Cadastro />}></Route>

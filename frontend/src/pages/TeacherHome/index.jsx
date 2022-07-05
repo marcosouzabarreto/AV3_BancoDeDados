@@ -1,9 +1,8 @@
-import React from 'react';
-import './style.css';
-import { useContext } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useContext } from 'react';
 import StoreContext from '../../components/Store/Context';
-
+import { useEffect } from 'react';
+import api from '../../api';
+import { FormItem } from '../../components/FormItem';
 
 
 export const TeacherHome = () => {;
