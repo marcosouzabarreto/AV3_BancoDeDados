@@ -1,5 +1,4 @@
-import React, { useState } from 'react';
-import { FormItem } from '../../components/FormItem';
+import React from 'react';
 import './style.css';
 import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -7,13 +6,28 @@ import StoreContext from '../../components/Store/Context';
 
 
 
-export const TeacherHome = () => {
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [materia, setMateria] = useState();
-  const { removeRole, removeToken, token } = useContext(StoreContext);
+export const TeacherHome = () => {;
+  const { removeRole, removeToken} = useContext(StoreContext);
 
   const navigate = useNavigate();
+  const [materias, setMaterias] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const { token } = useContext(StoreContext);
+
+  useEffect(() => {
+    setLoading(true);
+    api.getTeacherId(token).then((r) => {
+      api
+        .getTeacherSubjects(r)
+        .then((r) => {
+          setMaterias(r);
+        })
+        .finally(() => {
+          setLoading(false);
+        });
+    });
+  }, [token]);
 
   return (
     <div>
